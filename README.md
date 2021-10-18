@@ -28,3 +28,7 @@ In addition, for each one of the classifiers we compared different word embeddin
 3. fastText 
 
 For more details regarding the linguistic inconsistency detection check the folder **6 Detect linguistic inconsistencies**. 
+
+The folder **7 Evaluation using unseen real-world dataset** contains the evaluation of our best performing models using an extrnaml real-world dataset. We used the dataset from the prior work from Dalla Palma et al. 2021 [1].
+
+[1] Dalla Palma, S., Di Nucci, D., Palomba, F., & Tamburri, D. A. (2021). Within-project defect prediction of infrastructure-as-code using product and process metrics. IEEE Transactions on Software Engineering, 1-1.

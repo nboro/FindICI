@@ -1,0 +1,32 @@
+consistent 1-1:
+['AnsibleTask','TaskName','Remove','any','lingering','tmp','files','TaskDescription','shell','rm','-rf','/tmp/','guid']
+
+--------------------------------------------------------------
+ML
+
+0-0
+['AnsibleTask','TaskName','Get','file_descriptors','total_limit','TaskDescription','shell','openshift_cli','get','project','project_dev','register','result','ignore_errors','True','changed_when','False']
+
+0-1
+['AnsibleTask','TaskName','Save','the','iptables','rules','TaskDescription','shell','iptables-save','/etc/sysconfig/iptables','become','True','changed_when','True']
+
+initial task
+['AnsibleTask','TaskName','Get','file_descriptors','total_limit','TaskDescription','become','True','register','actual_fd_limit','shell',
+  'container_cli','exec','container_cli','ps','-q','filter','name=rabbitmq','head','-1','rabbitmqctl','eval','get_value','max_fds',
+  'erlang','system_info','check_io','changed_when','False']
+---------------------------------------------------------------
+Validation
+
+0-0
+['AnsibleTask','TaskName','Java','Source','environment','variables','TaskDescription','shell','source','/etc/profile','args','executable','/bin/bash','changed_when','False','tags','skip_ansible_lint']
+
+0-1
+['AnsibleTask', 'TaskName','reload','systemd','TaskDescription','shell','systemctl','daemon-reload','changed_when','False','when', 'mongodb_is_systemd']
+-----------------------------------------------------------------
+DL
+
+0-0
+['AnsibleTask','TaskName','Get','docker','device','TaskDescription','shell','openshift_cli','get','project','project_test','register','result','ignore_errors','True','changed_when','False']
+
+0-1
+['AnsibleTask','TaskName','Give','user','access','to','the','completed','project','TaskDescription','shell','oc','policy','add-role-to-user','admin','ocp_username','-n','ocp_project_completed']
